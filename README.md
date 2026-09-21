@@ -1,48 +1,49 @@
 # 🤖 Teable Docker - AI Spreadsheet Self-Hosted
 
-[![GitHub Stars](https://img.shields.io/github/stars/teableio/teable?style=flat-square&logo=github)](https://github.com/teableio/teable)
-[![Docker Pulls](https://img.shields.io/docker/pulls/ghcr.io/teableio/teable?style=flat-square&logo=docker)](https://github.com/teableio/teable/pkgs/container/teable)
-[![License](https://img.shields.io/github/license/teableio/teable?style=flat-square)](https://github.com/teableio/teable/blob/main/LICENSE)
-[![GitHub Release](https://img.shields.io/github/v/release/teableio/teable?style=flat-square&logo=github)](https://github.com/teableio/teable/releases)
+[![GitHub Stars](https://img.shields.io/github/stars/teableio/teable?style=social)](https://github.com/teableio/teable)
+[![Docker Pulls](https://img.shields.io/docker/pulls/ghcr.io/teableio/teable)](https://github.com/teableio/teable/pkgs/container/teable)
+[![License](https://img.shields.io/github/license/teableio/teable)](https://github.com/teableio/teable/blob/main/LICENSE)
+[![Docker Image](https://img.shields.io/badge/docker-ghcr.io%2Fteableio%2Fteable-blue)](https://github.com/teableio/teable/pkgs/container/teable)
 
 ## 📋 Descripción general
 
 **Teable** es un **AI Spreadsheet autohospedado** basado en PostgreSQL que proporciona una alternativa profesional a Airtable/Notion. Combina la potencia de una base de datos relacional real con la flexibilidad de una hoja de cálculo visual, añadiendo capacidades nativas de IA: chat sobre datos, App Builder con agentes, automatizaciones inteligentes y relleno automático de campos.
 
-Esta implementación Docker permite desplegar Teable en modo **Standalone** (tablas + API REST, sin IA) o **Full-featured** (con IA completa: chat, App Builder, automatizaciones). Todo bajo tu control, sin suscripciones cloud, con 21.7k⭐ en GitHub y licencia AGPL-3.0.
+Este repositorio contiene la configuración **Docker Compose** para desplegar Teable en modo **Standalone** (tablas + API REST, sin funciones IA) de forma sencilla y lista para producción. Ideal para equipos que buscan soberanía de datos, cero suscripciones cloud y rendimiento a escala de millones de filas.
+
+> 📖 Basado en la guía: [Cómo instalar Teable en Docker - AI Spreadsheet alternativa Airtable/Notion](https://genbyte.blogspot.com/2026/09/como-instalar-teable-en-docker-ai.html)
 
 ## ✨ Características principales
 
 - 🗂️ **Vistas múltiples**: Grid (hoja cálculo), Form (entrada estructurada), Kanban (tableros), Gallery (miniaturas), Calendar (línea temporal)
-- 🐘 **PostgreSQL real**: Backend escalable, confiable, consultas SQL nativas, sin vendor lock-in
-- 🤖 **AI Chat nativo**: Pregunta sobre tus datos en lenguaje natural, análisis y operaciones directas
-- 🏗️ **App Builder**: Describe la app que necesitas, agente IA la construye en sandbox aislado, deploy one-click
-- ⚡ **AI Automations**: Reacciona a cambios de registros, schedules, webhooks con pasos de razonamiento IA
-- ✨ **AI Field Filling**: Generación y enriquecimiento masivo de valores de campos automático e inteligente
+- 🐘 **PostgreSQL real**: Backend SQL escalable, confiable, sin vendor lock-in — consultas SQL nativas
+- 🤖 **IA nativa (Full-featured)**: Chat en lenguaje natural, App Builder (agentes generan apps), AI Automations, AI Field Filling
 - 👥 **Colaboración real-time**: Múltiples usuarios simultáneos, comentarios, historial de registros, undo/redo
-- 🧮 **Fórmulas avanzadas**: Field functions, validación, computaciones complejas sobre datos
-- 🔌 **Plugins + API REST**: Extensiones, API completa para integraciones custom, webhooks
-- 📊 **Millones de filas**: Rendimiento sin lag, PostgreSQL escala, Grid rápido incluso en huge datasets
-- 🔐 **Permisos granulares**: Multi-user con roles, control de acceso por tabla/vista
-- 🚀 **Tres modos deployment**: Cloud (teable.ai), Full-featured self-host (IA), Standalone (solo API)
+- 🧮 **Fórmulas avanzadas**: Field functions, validación de campos, computaciones complejas
+- 🔌 **Plugins + API REST**: Extensiones, webhooks, API completa para integraciones custom
+- ⚡ **Millones de filas sin lag**: PostgreSQL optimizado, carga casi instantánea en datasets grandes
+- 🔐 **Permisos granulares**: Multi-usuario con roles (Admin, Editor, Viewer), control por tabla/vista
+- 📦 **Tres modos de despliegue**: Cloud (teable.ai), Full-featured self-host (IA completa), Standalone (API + datos)
+- 🐳 **Docker multi-arquitectura**: Despliegue sencillo, actualizaciones con `docker compose pull`
+- 📄 **Licencia AGPL-3.0**: Open source (paquetes MIT), enterprise-ready
 
 ## 📋 Requisitos del sistema
 
-- **Docker & Docker Compose v2+**
-- **RAM**: 4-8 GB mínimo (full-featured con IA); 2 GB suficiente para Standalone
-- **Disco**: 20-100+ GB según volumen de datos y modelos IA si se incluyen
-- **Puerto TCP**: 3000 (Web UI) o reverse proxy HTTPS
-- **PostgreSQL 14+** (incluido en contenedor de deployment Teable)
-- **Node.js 18+** (backend Next.js, incluido en imagen)
-- **IA features (opcional)**: API key LLM (OpenAI, etc.) o modelos locales
-- **App Builder**: Requiere Docker separado (agent sandbox) + compute adicional
-- **Opcional**: S3 o storage compatible para attachments
+- ✅ **Docker** & **Docker Compose v2+**
+- 💾 **RAM**: 4–8 GB mínimo (Full-featured con IA); 2 GB suficiente para Standalone
+- 💿 **Disco**: 20–100+ GB según volumen de datos y modelos IA si se incluyen
+- 🌐 **Puerto TCP**: 3000 (Web UI) o reverse proxy con HTTPS
+- 🐘 **PostgreSQL 14+** (incluido en el contenedor de despliegue)
+- 🟢 **Node.js 18+** (backend Next.js, dentro del contenedor)
+- 🔑 **IA (opcional)**: API Key de LLM (OpenAI, etc.) o modelos locales
+- 🏗️ **App Builder**: Requiere Docker separado (sandbox de agentes) + compute
+- ☁️ **Storage S3 compatible (opcional)**: Para adjuntos en producción
 
 ## 🐳 Instalación
 
-### Modo Standalone: Tablas, vistas, API REST (sin IA)
+### Modo Standalone: tablas, vistas, API REST (sin IA)
 
-#### Paso 1: Crear `docker-compose.yml`
+#### Paso 1: `docker-compose.yml`
 
 ```yaml
 version: '3.8'
@@ -88,21 +89,17 @@ volumes:
 ```bash
 # Generar secret aleatorio seguro
 openssl rand -hex 32
-```
-
-Copia el output y crea un archivo `.env` en el mismo directorio:
-
-```env
-NEXTAUTH_SECRET=tu_secret_generado_aqui
+# Copiar el output y crear archivo .env o exportar variable
+echo "NEXTAUTH_SECRET=tu_secret_aqui" > .env
 ```
 
 #### Paso 3: Iniciar Teable
 
 ```bash
-# Guardar compose como docker-compose.yml
+# Guardar el compose como docker-compose.yml
 docker compose up -d
 
-# Espera ~15 segundos para migraciones
+# Esperar ~15 segundos para migraciones
 docker compose logs -f teable
 # Debería mostrar "Ready" cuando esté listo
 ```
@@ -111,129 +108,164 @@ docker compose logs -f teable
 
 📊 **Teable Web UI**: http://localhost:3000
 
-Desde otros dispositivos en la red local:
-```bash
-# Obtener IP del servidor
-hostname -I
-# Acceder via: http://192.168.1.100:3000
-```
+#### Setup inicial (primer acceso)
+
+1. Abre http://localhost:3000
+2. **Sign up** → crear usuario (email + contraseña)
+3. **Setup workspace**
+4. Crear primera base de datos → agregar tablas
+5. ¡Empezar a construir!
+
+> 💡 **Desde otros dispositivos**: Usa la IP de tu servidor: `http://192.168.1.100:3000`  
+> Para obtener tu IP: `hostname -I`
 
 ## ⚙️ Configuración
 
-1. **Variables de entorno críticas**: `DATABASE_URL`, `NEXTAUTH_SECRET`, `NEXTAUTH_URL`, `TZ`
-2. **Base de datos**: PostgreSQL 16 Alpine con healthcheck para arranque ordenado
-3. **Persistencia**: Volumen `postgres_data` para datos persistentes
-4. **Zona horaria**: Ajusta `TZ` según tu ubicación (ej: `America/Mexico_City`, `UTC`)
-5. **Reverse Proxy (producción)**: Configura nginx/Traefik/Caddy con HTTPS y actualiza `NEXTAUTH_URL`
-6. **Attachments S3 (opcional)**: Añade `S3_ENDPOINT`, `S3_BUCKET`, `S3_ACCESS_KEY`, `S3_SECRET_KEY`
-7. **IA Features (Full-featured)**: Requiere deployment separado `teableio/teable-deployment` o license key
+1. **Variables de entorno críticas**  
+   - `DATABASE_URL`: Conexión PostgreSQL (usuario, password, host, puerto, DB)  
+   - `NEXTAUTH_SECRET`: Clave secreta para autenticación (generar con `openssl rand -hex 32`)  
+   - `NEXTAUTH_URL`: URL pública de acceso (ej. `https://teable.tudominio.com`)  
+   - `TZ`: Zona horaria (ej. `Europe/Madrid`)
+
+2. **Credenciales PostgreSQL**  
+   - Usuario/DB/Password definidos en `postgres` service y referenciados en `DATABASE_URL`  
+   - Cambiar `teable123` por password seguro en producción
+
+3. **Persistencia de datos**  
+   - Volumen `postgres_data` mapea `/var/lib/postgresql/data`  
+   - Backups automáticos vía `pg_dump` (ver sección mantenimiento)
+
+4. **Reverse Proxy (recomendado producción)**  
+   - Nginx/Traefik/Caddy terminando TLS  
+   - Actualizar `NEXTAUTH_URL` a `https://tu-dominio.com`  
+   - Configurar headers `X-Forwarded-Proto`, `X-Forwarded-For`
+
+5. **Modo Full-featured (IA)**  
+   - Requiere despliegue `teableio/teable-deployment` (repo separado)  
+   - O licencia key en teable.ai para activar IA en imagen oficial  
+   - Migración suave desde Standalone: los datos permanecen
 
 ## 🚀 Primeros pasos
 
-1. **Crear workspace + base de datos**
-   - Abre http://localhost:3000
-   - Sign up → crear usuario (email + contraseña)
-   - Setup workspace → Create Base → nombra base (ej: "CRM", "Projects")
-   - Se crea workspace automáticamente, eres owner
+1. **Crear workspace + base de datos**  
+   Dashboard → **Create Base** → nombra la base (ej: "CRM", "Projects") → se crea workspace automáticamente → eres owner
 
-2. **Crear tablas**
-   - Base → Add Table → nombra tabla (ej: "Contacts", "Tasks")
-   - Auto-crea columna "Name" (String)
-   - Agrega más columnas: Email, Phone, Status, etc.
-   - Elige field type: Text, Number, Checkbox, Date, Attachment, etc.
+2. **Crear tablas**  
+   Base → **Add Table** → nombra tabla (ej: "Contacts", "Tasks") → auto-crea columna "Name" (String) → agrega más columnas: Email, Phone, Status, etc. → elige field type: Text, Number, Checkbox, Date, Attachment, etc.
 
-3. **Agregar filas (records)**
-   - View Grid → Click "+" para agregar fila
-   - Ingresa datos → guardado automático real-time
+3. **Agregar filas (records)**  
+   Vista Grid → Click **"+"** para agregar fila → ingresa datos → guardado automático real-time
 
-4. **Explorar vistas**
-   - Tabla → "+" Add View
-   - Elige: Form (input structured), Kanban (cards), Gallery (thumbnails), Calendar (timeline)
+4. **Explorar vistas**  
+   Tabla → **"+" Add View** → elige **Form** (input estructurado), **Kanban** (tarjetas), **Gallery** (miniaturas), **Calendar** (línea temporal)
 
-5. **Fórmulas + validación**
-   - Tabla → Add Column → elige "Formula"
-   - Escribe fórmula (ej: `{Name} + " " + {Email}`)
-   - Validation: marca requerida, rango numérico, etc.
+5. **Fórmulas + validación**  
+   Tabla → **Add Column** → elige **"Formula"** → escribe fórmula (ej: `{Name} + " " + {Email}`) → o **Validation**: marca requerida, rango numérico, etc.
 
-6. **Colaboración**
-   - Base Settings → Share → Add Member
-   - Email usuario, selecciona role (Admin, Editor, Viewer)
-   - Multi-user acceso simultáneo, comments on records
+6. **Colaboración**  
+   Base Settings → **Share** → **Add Member** → email usuario, selecciona rol (Admin, Editor, Viewer) → multi-usuario simultáneo, comentarios en registros
 
-7. **API REST**
-   - Settings → API Tokens → Create token
-   - Usa para webhooks, integraciones custom
-   - Docs en help.teable.ai/api-doc
+7. **API REST (para integraciones)**  
+   Settings → **API Tokens** → **Create token** → usa para webhooks, integraciones custom → Docs en `help.teable.ai/api-doc`
 
 ## 💡 Casos de uso
 
-- 🔄 **Reemplazo Airtable**: Base datos flexible, vistas múltiples, API REST, colaboración, self-hosted
-- 📇 **CRM interno**: Contactos, deals, pipeline, vista Kanban, comentarios, historial
-- 📋 **Gestión proyectos**: Tasks, timelines, asignación equipo, vista Calendar, comentarios colaborativos
-- 📦 **Inventory management**: SKU tracking, stock levels, reorder, fórmulas automáticas, fotos adjuntas
-- 🤖 **AI-powered workflows (Full-featured)**: AI chat analiza datos, AI automations reaccionan eventos, App Builder genera tools
-- 🛠️ **No-code/low-code platform**: Usuarios no-tech construyen apps con agentes IA
+- 🔄 **Reemplazo Airtable**: Base de datos flexible, vistas múltiples, API REST, colaboración, self-hosted, sin suscripción
+- 📇 **CRM interno**: Contactos, deals, pipeline, vista Kanban, comentarios, historial de cambios
+- 📋 **Gestión de proyectos**: Tasks, timelines, asignación de equipo, vista Calendar, comentarios colaborativos
+- 📦 **Inventario**: SKU tracking, niveles de stock, reorder points, fórmulas automáticas, adjuntos de fotos
+- 🤖 **Workflows con IA (Full-featured)**: AI Chat analiza datos, AI Automations reaccionan a eventos, App Builder genera tools
+- 🛠️ **Plataforma no-code/low-code**: Usuarios no-técnicos construyen apps con agentes IA
 
 ## 🔒 Acceso remoto seguro
 
-Para exponer Teable de forma segura a internet:
+> **Recomendado para producción**: No exponer puerto 3000 directamente a Internet.
 
-1. **Reverse Proxy recomendado**: Nginx Proxy Manager, Traefik o Caddy con Let's Encrypt
-2. **Configurar `NEXTAUTH_URL`** con tu dominio HTTPS (ej: `https://teable.tudominio.com`)
-3. **Autenticación**: Teable usa NextAuth (email/password, OAuth providers configurables)
-4. **Firewall**: Limita acceso directo a puerto 3000 solo a red local
-5. **VPN alternativa**: WireGuard/Tailscale para acceso privado sin exposición pública
+1. **Reverse Proxy con TLS** (Nginx, Traefik, Caddy)  
+   - Terminación HTTPS en proxy  
+   - `NEXTAUTH_URL=https://teable.tudominio.com`  
+   - Headers: `X-Forwarded-Proto: https`, `X-Forwarded-For`
+
+2. **Autenticación adicional**  
+   - Authelia / Authentik / OAuth2 Proxy delante del proxy  
+   - 2FA obligatorio para acceso externo
+
+3. **VPN / Tailscale / WireGuard**  
+   - Acceso solo via red privada virtual  
+   - Cero exposición pública
+
+4. **Firewall**  
+   - Restringir puerto 3000 solo a IP del proxy / red VPN
 
 ## 🛠️ Gestión y mantenimiento
 
+### Ver estado
 ```bash
-# Ver estado contenedores
 docker compose ps
+```
 
-# Ver logs en tiempo real
+### Ver logs
+```bash
 docker compose logs -f teable
 docker compose logs -f postgres
+```
 
-# Detener Teable
+### Detener Teable
+```bash
 docker compose down
+```
 
-# Actualizar versión
+### Actualizar versión
+```bash
 docker compose pull
 docker compose up -d
+```
 
-# Backup datos PostgreSQL
-docker compose exec postgres pg_dump -U teable teable > backup.sql
+### Backup datos PostgreSQL
+```bash
+docker compose exec postgres pg_dump -U teable teable > backup_$(date +%F).sql
+```
 
-# Restore datos
-docker compose exec -T postgres psql -U teable teable < backup.sql
+### Restore datos
+```bash
+docker compose exec -T postgres psql -U teable teable < backup_2026-01-15.sql
+```
 
-# PostgreSQL tuning (producción)
-# Ver help.teable.ai/en/deploy/docker
-# Ajustar: RAM, shared_buffers, work_mem, effective_cache_size, etc.
+### PostgreSQL tuning (producción)
+```bash
+# Ver guía oficial: help.teable.ai/en/deploy/docker
+# Parámetros clave: shared_buffers, work_mem, effective_cache_size, maintenance_work_mem
+# Ajustar según RAM disponible (ej. shared_buffers = 25% RAM)
+```
 
-# Monitorear consumo recursos
+### Monitorear consumo
+```bash
 docker stats teable postgres
 # Típicamente:
-# teable: 300-500MB RAM
-# postgres: 200-800MB RAM (según tuning)
+# teable: 300-500 MB RAM
+# postgres: 200-800 MB RAM (según tuning y dataset)
 ```
 
 ### Full-featured mode (con IA)
-
 Para desbloquear **AI Chat, App Builder, AI Automations**:
 
-- **Opción A**: `teableio/teable-deployment` - Repo completo para full-featured self-host (requiere compute, orchestration)
-- **Opción B**: Teable Cloud (teable.ai) - Managed hosted, pago por uso, sin self-host
-- **Opción C**: License key - Activa IA features en imagen oficial (ver pricing teable.ai)
+| Opción | Descripción |
+|--------|-------------|
+| `teableio/teable-deployment` | Repo completo para full-featured self-host (requiere compute, orquestación) |
+| **Teable Cloud** (teable.ai) | Hosted managed, pago por uso, sin self-host |
+| **License Key** | Activa IA en imagen oficial (ver pricing teable.ai) |
 
-> 💡 **Migración suave**: Empieza con Standalone (esta guía). Si necesitas IA, migras a full-featured manteniendo tus datos.
+> 💡 **Empieza con Standalone** (esta guía). Si necesitas IA, migración suave a full-featured (datos se mantienen).
 
 ## 📝 Licencia
 
 - **Community Edition**: AGPL-3.0 (open source)
-- **AI Features / Enterprise**: Licencia comercial (ver pricing en teable.ai)
-- **Packages internos**: MIT
+- **Paquetes internos**: MIT
+- **IA Features / Enterprise**: Licencia comercial (ver [teable.ai/pricing](https://teable.ai/pricing))
 
 ---
 
-> 📖 **Guía completa y detalles**: [Cómo instalar Teable en Docker - AI Spreadsheet alternativa Airtable/Notion](https://genbyte.blogspot.com/2026/09/como-instalar-teable-en-docker-ai.html)
+> 📌 **Referencia completa**: [Cómo instalar Teable en Docker - AI Spreadsheet alternativa Airtable/Notion](https://genbyte.blogspot.com/2026/09/como-instalar-teable-en-docker-ai.html)  
+> 🐙 **Repo oficial**: [github.com/teableio/teable](https://github.com/teableio/teable)  
+> 📚 **Docs despliegue**: [help.teable.ai/en/deploy/docker](https://help.teable.ai/en/deploy/docker)  
+> 🤝 **Comunidad**: [Forum](https://github.com/teableio/teable/discussions) | [Discord](https://discord.gg/teable)
